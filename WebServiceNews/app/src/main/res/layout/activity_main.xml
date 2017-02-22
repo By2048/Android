@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/head"
+        android:id="@+id/relativeLayout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#ffffff"
+            android:text="新闻客户端"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/title"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+            <LinearLayout
+                android:id="@+id/category_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:background="#646464"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="国内"
+                    android:id="@+id/cid1"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:background="#646464"
+                    android:layout_weight="1"
+                    android:text="国外"
+                    android:id="@+id/cid2"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/cid1"
+                    android:layout_toEndOf="@+id/cid1" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:background="#646464"
+                    android:layout_weight="1"
+                    android:text="娱乐"
+                    android:id="@+id/cid3"
+                    android:layout_toRightOf="@+id/cid2" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:background="#646464"
+                    android:layout_weight="1"
+                    android:text="体育"
+                    android:id="@+id/cid4"
+                    android:layout_toRightOf="@+id/cid3" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:background="#646464"
+                    android:layout_weight="1"
+                    android:text="军事"
+                    android:id="@+id/cid5"
+                    android:layout_toRightOf="@+id/cid4" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:background="#646464"
+                    android:layout_weight="1"
+                    android:text="科技"
+                    android:id="@+id/cid6"
+                    android:layout_toRightOf="@+id/cid5" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:layout_marginRight="10dp"
+                    android:background="#646464"
+                    android:layout_weight="1"
+                    android:text="汽车"
+                    android:id="@+id/cid7"
+                    android:layout_toRightOf="@+id/cid6" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:background="#646464"
+                    android:layout_weight="1"
+                    android:text="焦点"
+                    android:id="@+id/cid8"
+                    android:layout_toRightOf="@+id/cid8" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/newsListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+</LinearLayout>

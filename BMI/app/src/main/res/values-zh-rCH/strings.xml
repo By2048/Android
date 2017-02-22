@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BMI体质指数计算器</string>
+    <string name="action_settings">设置</string>
+    <string name="str_height">身高(CM)</string>
+    <string name="str_weight">体重(KG)</string>
+    <string name="str_calcBmi">计算 Bmi</string>
+    <string name="str_resule">结果</string>
+    <string name="str_thin">偏瘦</string>
+    <string name="str_normal">正常</string>
+    <string name="str_fat">肥胖</string>
+    <string name="str_error">输入错误</string>
+    <string name="str_ment_info">信息</string>
+    <string name="str_menu_info_text">BMI体质指数计算器 信息 测试</string>
+    <string name="str_menu_quit">退出</string>
+</resources>

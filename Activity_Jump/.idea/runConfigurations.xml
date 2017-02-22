@@ -1,0 +1,9 @@
+luent syntax.</returns>
+        </member>
+        <member name="M:Ninject.Planning.Bindings.BindingBuilder`3.#ctor(Ninject.Planning.Bindings.IBindingConfiguration,Ninject.IKernel,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ninject.Planning.Bindings.BindingBuilder`3"/> class.
+            </summary>
+            <param name="bindingConfigurationConfiguration">The binding to build.</param>
+            <param name="kernel">The kernel.</param>
+            <param name="serviceNames">The names of the serv

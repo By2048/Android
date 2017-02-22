@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BMI CALC</string>
+    <string name="action_settings">Settings</string>
+    <string name="str_height">Height(CM)</string>
+    <string name="str_weight">Weight(KG)</string>
+    <string name="str_calcBmi">Calc_Bmi</string>
+    <string name="str_resule">resule</string>
+    <string name="str_thin">underweight</string>
+    <string name="str_normal">normal</string>
+    <string name="str_fat">overweight</string>
+    <string name="str_error">input error</string>
+    <string name="str_menu_info">information</string>
+    <string name="str_menu_info_text">bmi information test</string>
+    <string name="str_menu_quit">quit</string>
+</resources>

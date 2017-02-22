@@ -1,0 +1,182 @@
+>
+    ///   <summary>Merge the contents of two or more objects together into the first object.</summary>
+    ///   <param name="deep" type="Boolean">If true, the merge becomes recursive (aka. deep copy).</param>
+    ///   <param name="target" type="Object">The object to extend. It will receive the new properties.</param>
+    ///   <param name="object1" type="Object">An object containing additional properties to merge in.</param>
+    ///   <param name="objectN" type="Object">Additional objects containing properties to merge in.</param>
+    ///   <returns type="Object" />
+    /// </signature>
+  },
+  'get': function() {
+    /// <signature>
+    ///   <summary>Load data from the server using a HTTP GET request.</summary>
+    ///   <param name="url" type="String">A string containing the URL to which the request is sent.</param>
+    ///   <param name="data" type="String">A plain object or string that is sent to the server with the request.</param>
+    ///   <param name="success(data, textStatus, jqXHR)" type="Function">A callback function that is executed if the request succeeds.</param>
+    ///   <param name="dataType" type="String">The type of data expected from the server. Default: Intelligent Guess (xml, json, script, or html).</param>
+    ///   <returns type="jqXHR" />
+    /// </signature>
+  },
+  'getJSON': function() {
+    /// <signature>
+    ///   <summary>Load JSON-encoded data from the server using a GET HTTP request.</summary>
+    ///   <param name="url" type="String">A string containing the URL to which the request is sent.</param>
+    ///   <param name="data" type="PlainObject">A plain object or string that is sent to the server with the request.</param>
+    ///   <param name="success(data, textStatus, jqXHR)" type="Function">A callback function that is executed if the request succeeds.</param>
+    ///   <returns type="jqXHR" />
+    /// </signature>
+  },
+  'getScript': function() {
+    /// <signature>
+    ///   <summary>Load a JavaScript file from the server using a GET HTTP request, then execute it.</summary>
+    ///   <param name="url" type="String">A string containing the URL to which the request is sent.</param>
+    ///   <param name="success(script, textStatus, jqXHR)" type="Function">A callback function that is executed if the request succeeds.</param>
+    ///   <returns type="jqXHR" />
+    /// </signature>
+  },
+  'globalEval': function() {
+    /// <signature>
+    ///   <summary>Execute some JavaScript code globally.</summary>
+    ///   <param name="code" type="String">The JavaScript code to execute.</param>
+    /// </signature>
+  },
+  'grep': function() {
+    /// <signature>
+    ///   <summary>Finds the elements of an array which satisfy a filter function. The original array is not affected.</summary>
+    ///   <param name="array" type="Array">The array to search through.</param>
+    ///   <param name="function(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the item, and the second argument is the index.  The function should return a Boolean value.  this will be the global window object.</param>
+    ///   <param name="invert" type="Boolean">If "invert" is false, or not provided, then the function returns an array consisting of all elements for which "callback" returns true.  If "invert" is true, then the function returns an array consisting of all elements for which "callback" returns false.</param>
+    ///   <returns type="Array" />
+    /// </signature>
+  },
+  'hasData': function() {
+    /// <signature>
+    ///   <summary>Determine whether an element has any jQuery data associated with it.</summary>
+    ///   <param name="element" type="Element">A DOM element to be checked for data.</param>
+    ///   <returns type="Boolean" />
+    /// </signature>
+  },
+  'holdReady': function() {
+    /// <signature>
+    ///   <summary>Holds or releases the execution of jQuery's ready event.</summary>
+    ///   <param name="hold" type="Boolean">Indicates whether the ready hold is being requested or released</param>
+    /// </signature>
+  },
+  'inArray': function() {
+    /// <signature>
+    ///   <summary>Search for a specified value within an array and return its index (or -1 if not found).</summary>
+    ///   <param name="value" type="Anything">The value to search for.</param>
+    ///   <param name="array" type="Array">An array through which to search.</param>
+    ///   <param name="fromIndex" type="Number">The index of the array at which to begin the search. The default is 0, which will search the whole array.</param>
+    ///   <returns type="Number" />
+    /// </signature>
+  },
+  'isArray': function() {
+    /// <signature>
+    ///   <summary>Determine whether the argument is an array.</summary>
+    ///   <param name="obj" type="Object">Object to test whether or not it is an array.</param>
+    ///   <returns type="boolean" />
+    /// </signature>
+  },
+  'isEmptyObject': function() {
+    /// <signature>
+    ///   <summary>Check to see if an object is empty (contains no enumerable properties).</summary>
+    ///   <param name="object" type="Object">The object that will be checked to see if it's empty.</param>
+    ///   <returns type="Boolean" />
+    /// </signature>
+  },
+  'isFunction': function() {
+    /// <signature>
+    ///   <summary>Determine if the argument passed is a Javascript function object.</summary>
+    ///   <param name="obj" type="PlainObject">Object to test whether or not it is a function.</param>
+    ///   <returns type="boolean" />
+    /// </signature>
+  },
+  'isNumeric': function() {
+    /// <signature>
+    ///   <summary>Determines whether its argument is a number.</summary>
+    ///   <param name="value" type="PlainObject">The value to be tested.</param>
+    ///   <returns type="Boolean" />
+    /// </signature>
+  },
+  'isPlainObject': function() {
+    /// <signature>
+    ///   <summary>Check to see if an object is a plain object (created using "{}" or "new Object").</summary>
+    ///   <param name="object" type="PlainObject">The object that will be checked to see if it's a plain object.</param>
+    ///   <returns type="Boolean" />
+    /// </signature>
+  },
+  'isWindow': function() {
+    /// <signature>
+    ///   <summary>Determine whether the argument is a window.</summary>
+    ///   <param name="obj" type="PlainObject">Object to test whether or not it is a window.</param>
+    ///   <returns type="boolean" />
+    /// </signature>
+  },
+  'isXMLDoc': function() {
+    /// <signature>
+    ///   <summary>Check to see if a DOM node is within an XML document (or is an XML document).</summary>
+    ///   <param name="node" type="Element">The DOM node that will be checked to see if it's in an XML document.</param>
+    ///   <returns type="Boolean" />
+    /// </signature>
+  },
+  'makeArray': function() {
+    /// <signature>
+    ///   <summary>Convert an array-like object into a true JavaScript array.</summary>
+    ///   <param name="obj" type="PlainObject">Any object to turn into a native Array.</param>
+    ///   <returns type="Array" />
+    /// </signature>
+  },
+  'map': function() {
+    /// <signature>
+    ///   <summary>Translate all items in an array or object to new array of items.</summary>
+    ///   <param name="array" type="Array">The Array to translate.</param>
+    ///   <param name="callback(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the array item, the second argument is the index in array The function can return any value. Within the function, this refers to the global (window) object.</param>
+    ///   <returns type="Array" />
+    /// </signature>
+    /// <signature>
+    ///   <summary>Translate all items in an array or object to new array of items.</summary>
+    ///   <param name="arrayOrObject" type="Object">The Array or Object to translate.</param>
+    ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
+    ///   <returns type="Array" />
+    /// </signature>
+  },
+  'merge': function() {
+    /// <signature>
+    ///   <summary>Merge the contents of two arrays together into the first array.</summary>
+    ///   <param name="first" type="Array">The first array to merge, the elements of second added.</param>
+    ///   <param name="second" type="Array">The second array to merge into the first, unaltered.</param>
+    ///   <returns type="Array" />
+    /// </signature>
+  },
+  'noConflict': function() {
+    /// <signature>
+    ///   <summary>Relinquish jQuery's control of the $ variable.</summary>
+    ///   <param name="removeAll" type="Boolean">A Boolean indicating whether to remove all jQuery variables from the global scope (including jQuery itself).</param>
+    ///   <returns type="Object" />
+    /// </signature>
+  },
+  'noop': function() {
+    /// <summary>An empty function.</summary>
+  },
+  'now': function() {
+    /// <summary>Return a number representing the current time.</summary>
+    /// <returns type="Number" />
+  },
+  'param': function() {
+    /// <signature>
+    ///   <summary>Create a serialized representation of an array or object, suitable for use in a URL query string or Ajax request.</summary>
+    ///   <param name="obj" type="Object">An array or object to serialize.</param>
+    ///   <returns type="String" />
+    /// </signature>
+    /// <signature>
+    ///   <summary>Create a serialized representation of an array or object, suitable for use in a URL query string or Ajax request.</summary>
+    ///   <param name="obj" type="Object">An array or object to serialize.</param>
+    ///   <param name="traditional" type="Boolean">A Boolean indicating whether to perform a traditional "shallow" serialization.</param>
+    ///   <returns type="String" />
+    /// </signature>
+  },
+  'parseHTML': function() {
+    /// <signature>
+    ///   <summary>Parses a string into an array of DOM nodes.</summary>
+    ///   <param name="data" type="String">HTML string to be parsed</par

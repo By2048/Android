@@ -1,0 +1,13 @@
+nature>
+    ///   <summary>Set one or more properties for the set of matched elements.</summary>
+    ///   <param name="propertyName" type="String">The name of the property to set.</param>
+    ///   <param name="value" type="Boolean">A value to set for the property.</param>
+    ///   <returns type="jQuery" />
+    /// </signature>
+    /// <signature>
+    ///   <summary>Set one or more properties for the set of matched elements.</summary>
+    ///   <param name="properties" type="PlainObject">An object of property-value pairs to set.</param>
+    ///   <returns type="jQuery" />
+    /// </signature>
+    /// <signature>
+    ///   <summary>Set one or more properties for th

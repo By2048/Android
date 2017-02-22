@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuInfo"
+        android:orderInCategory="1"
+        android:title="@string/str_menu_info">
+    </item>
+    <item
+        android:id="@+id/menuQuit"
+        android:title="@string/str_menu_quit"
+        android:orderInCategory="2">
+    </item>
+
+</menu>
