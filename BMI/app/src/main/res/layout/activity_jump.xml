@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_jump"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.bmi.am.bmi.jumpActivity">
+
+    <EditText
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:inputType="number"
+        android:ems="10"
+        android:editable="false"
+        android:id="@+id/jumpWeight"
+        android:layout_marginTop="58dp"
+        android:layout_below="@+id/jumpHeight"
+        android:layout_alignLeft="@+id/jumpHeight"
+        android:layout_alignStart="@+id/jumpHeight" />
+
+    <EditText
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/jumpHeight"
+        android:editable="false"
+        android:layout_marginTop="56dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="返回"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/jumpReturn"
+        android:layout_alignBaseline="@+id/jumpCalc"
+        android:layout_alignBottom="@+id/jumpCalc"
+        android:layout_alignRight="@+id/jumpWeight"
+        android:layout_alignEnd="@+id/jumpWeight" />
+
+    <Button
+        android:text="计算"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/jumpCalc"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/jumpWeight"
+        android:layout_alignStart="@+id/jumpWeight"
+        android:layout_marginBottom="109dp" />
+    <TextView
+        android:text="@string/str_resule"
+        android:gravity="center"
+        android:id="@+id/jumpTextResule"
+        android:textSize="15dp"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp" />
+
+
+</RelativeLayout>

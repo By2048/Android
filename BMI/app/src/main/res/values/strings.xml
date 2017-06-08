@@ -4,7 +4,7 @@
     <string name="str_height">Height(CM)</string>
     <string name="str_weight">Weight(KG)</string>
     <string name="str_calcBmi">Calc_Bmi</string>
-    <string name="str_resule">resule</string>
+    <string name="str_resule">...</string>
     <string name="str_thin">underweight</string>
     <string name="str_normal">normal</string>
     <string name="str_fat">overweight</string>

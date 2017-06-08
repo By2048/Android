@@ -28,23 +28,31 @@ public class BMIActivity extends AppCompatActivity {
         calcBmi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    double _height = Double.parseDouble(height.getText().toString()) / 100;
-                    double _weight = Double.parseDouble(weight.getText().toString());
-                    double bmi = _weight / (_height * _height);
-                    if (bmi < 18.5) {
-                        textResult.setText(R.string.str_thin);
-                    } else if (bmi > 24.9) {
-                        textResult.setText(R.string.str_fat);
-                    } else {
-                        textResult.setText(R.string.str_normal);
-                    }
-                    //Toast.makeText(BMIActivity.this,_height+" "+_weight+" "+bmi,Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    Toast.makeText(BMIActivity.this, R.string.str_error, Toast.LENGTH_SHORT).show();
-                }
+                Intent intent = new Intent();
+                intent.setClass(BMIActivity.this, jumpActivity.class);
+                double _height = Double.parseDouble(height.getText().toString());
+                double _weight = Double.parseDouble(weight.getText().toString());
+                intent.putExtra("_height", _height);
+                intent.putExtra("_weight", _weight);
+                startActivityForResult(intent, 1);
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == 2) {
+            double bmi = data.getDoubleExtra("BMI", 0);
+            if (bmi < 18.5) {
+                textResult.setText(R.string.str_thin);
+            } else if (bmi > 24.9) {
+                textResult.setText(R.string.str_fat);
+            } else {
+                textResult.setText(R.string.str_normal);
+            }
+
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,8 +69,8 @@ public class BMIActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.menuInfo:
-                Intent intent=new Intent();
-                intent.setClass(BMIActivity.this,InfoActivity.class);
+                Intent intent = new Intent();
+                intent.setClass(BMIActivity.this, InfoActivity.class);
                 startActivity(intent);
                 //Toast.makeText(this, "信息", Toast.LENGTH_SHORT).show();
                 break;
