@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MapPhotos</string>
+    <string name="str_baidumap">百度地图</string>
+    <string name="str_phototitle">相册名称</string>
+    <string name="str_maptitle">相册名称</string>
+    <string name="str_tip">下拉刷新</string>
+</resources>
