@@ -13,7 +13,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_margin="2dp"
-        app:srcCompat="@drawable/map_icon"
+        app:srcCompat="@drawable/film"
         android:contentDescription=""
         tools:ignore="ContentDescription" />
 
@@ -35,6 +35,6 @@
         android:id="@+id/imageViewMap"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        app:srcCompat="@drawable/map_icon"
+        app:srcCompat="@drawable/gmap"
         tools:ignore="ContentDescription" />
 </LinearLayout>

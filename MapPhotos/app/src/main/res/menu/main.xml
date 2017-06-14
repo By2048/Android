@@ -6,28 +6,28 @@
     <item
         android:id="@+id/menu_item_gallery"
         android:orderInCategory="100"
-        android:icon="@drawable/map_icon"
-        android:showAsAction="always|withText"
+        android:icon="@drawable/gallery"
+        app:showAsAction="always|withText"
         android:title="相册"/>
     <item
         android:id="@+id/menu_item_add"
         android:orderInCategory="101"
-        android:showAsAction="never"
+        app:showAsAction="never"
         android:title="新增条目" />
     <item
         android:id="@+id/menu_item_remove"
         android:orderInCategory="102"
-        android:showAsAction="never"
+        app:showAsAction="never"
         android:title="移除条目" />
     <item
         android:id="@+id/menu_item_edit"
         android:orderInCategory="103"
-        android:showAsAction="never"
+        app:showAsAction="never"
         android:title="修改名称"/>
     <item
         android:id="@+id/menu_item_map"
         android:orderInCategory="104"
-        android:showAsAction="never"
+        app:showAsAction="never"
         android:title="查看地图" />
 
 </menu>

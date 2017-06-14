@@ -6,16 +6,16 @@
     <item
         android:id="@+id/menu_map_none"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        app:showAsAction="never"
         android:title="无"/>
     <item
         android:id="@+id/menu_map_normal"
         android:orderInCategory="101"
-        android:showAsAction="never"
+        app:showAsAction="never"
         android:title="普通地图" />
     <item
         android:id="@+id/menu_map_satellite"
         android:orderInCategory="102"
-        android:showAsAction="never"
+        app:showAsAction="never"
         android:title="卫星图" />
 </menu>

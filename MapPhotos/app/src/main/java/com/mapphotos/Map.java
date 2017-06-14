@@ -48,7 +48,6 @@ import java.util.Comparator;
 import java.util.List;
 
 
-
 public class Map extends AppCompatActivity {
     private MapView mMapView;
     private LocationClient locationClient;
@@ -85,23 +84,22 @@ public class Map extends AppCompatActivity {
 
         //获取 MainActivity 传过来的相册信息
         Intent intent = getIntent();
-        albumId = intent.getIntExtra("album_id",-1);
+        albumId = intent.getIntExtra("album_id", -1);
         albumTitle = intent.getStringExtra("album_title");
 
         //初始化地图控件
-        mMapView =(MapView)findViewById(R.id.baiDuMv);
+        mMapView = (MapView) findViewById(R.id.baiDuMv);
         baiduMap = mMapView.getMap();
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15f);
         baiduMap.setMapStatus(msu);
 
-//        // 定位初始化
+        // 定位初始化
         initLocation();
 
         baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);// 一般地图
 
 
-//        从数据库加载相册中的照片
-
+        // 从数据库加载相册中的照片
         SQLiteDatabase db = openOrCreateDatabase("maphotos.db", Context.MODE_PRIVATE, null);
         String sql = "select * from t_album_picture " +
                 " where album_id= " + albumId;
@@ -118,13 +116,12 @@ public class Map extends AppCompatActivity {
 
             //获取缩略图
             Bitmap bmp = BitmapFactory.decodeFile(thumb);
-            if (bmp == null)
-            {
-                bmp = BitmapFactory.decodeResource(getResources(),R.drawable.camera);
+            if (bmp == null) {
+                bmp = BitmapFactory.decodeResource(getResources(), R.drawable.camera);
             }
             //循环添加坐标
             MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(new LatLng(latitude,longitude));
+            markerOptions.position(new LatLng(latitude, longitude));
             markerOptions.title(picture);
             markerOptions.icon(BitmapDescriptorFactory.fromBitmap(bmp));
             baiduMap.addOverlay(markerOptions);
@@ -148,15 +145,14 @@ public class Map extends AppCompatActivity {
                         .longitude(location.getLongitude()).build();
                 // 设置定位数据
                 baiduMap.setMyLocationData(locData);
-                Toast.makeText(getApplication(),myLatitude +""+ myLongitude,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), myLatitude + "" + myLongitude, Toast.LENGTH_SHORT).show();
                 //当前经纬度赋值
                 myLatitude = location.getLatitude();
                 myLongitude = location.getLongitude();
-                Toast.makeText(getApplication(),myLatitude +""+ myLongitude,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplication(), myLatitude + "" + myLongitude, Toast.LENGTH_LONG).show();
 
                 // 第一次定位时，将地图位置移动到当前位置
-                if (firstLocation)
-                {
+                if (firstLocation) {
                     firstLocation = false;
                     LatLng xy = new LatLng(location.getLatitude(),
                             location.getLongitude());
@@ -171,11 +167,11 @@ public class Map extends AppCompatActivity {
             }
         });
 
-//        地标单击查看大图
+        // 单击查看大图
         baiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-           //从地标 title 获取图片名
+                //从地标 title 获取图片名
                 String picture = marker.getTitle();
                 String path = CommonUtils.PICTURE_PATH + picture;
                 File file = new File(path);
@@ -183,12 +179,11 @@ public class Map extends AppCompatActivity {
                 //启动系统自带相册 显示图片
                 Intent intent1 = new Intent();
                 intent1.setAction(Intent.ACTION_VIEW);
-                intent1.setDataAndType(Uri.fromFile(file),"image/*");
+                intent1.setDataAndType(Uri.fromFile(file), "image/*");
                 startActivity(intent1);
                 return false;
             }
         });
-
 
 
         // 初始化有关拍照的各个组件
@@ -203,25 +198,25 @@ public class Map extends AppCompatActivity {
         popCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cameraBar.getVisibility() == View.VISIBLE) {
+                if (cameraBar.getVisibility() == View.VISIBLE) {
                     //清除拍照界面中的组件并隐藏
                     cameraBar.removeAllViews();
                     cameraBar.setVisibility(View.INVISIBLE);
-                } else if (cameraBar.getVisibility() == View.INVISIBLE){
+                } else if (cameraBar.getVisibility() == View.INVISIBLE) {
                     //如果还没有 CameraSurfaceView 组件， 则创建
-                    if(cameraSurfaceView == null) {
+                    if (cameraSurfaceView == null) {
                         cameraSurfaceView = new CameraSurfaceView(getApplicationContext());
                         //设置置顶显示，避免被挡住
                         cameraSurfaceView.setZOrderOnTop(true);
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                                 LinearLayout.LayoutParams.MATCH_PARENT,
                                 LinearLayout.LayoutParams.MATCH_PARENT);
-                        previewArea.addView(cameraSurfaceView,params);
+                        previewArea.addView(cameraSurfaceView, params);
                     }
                     //动态构建相机预览界面并显示
                     cameraBar.removeAllViews();
                     cameraBar.addView(previewArea);
-                    cameraBar.addView(snapArea);
+                    cameraBar.addView(snapArea) ;
                     cameraBar.setVisibility(View.VISIBLE);
                 }
             }
@@ -236,7 +231,7 @@ public class Map extends AppCompatActivity {
                     @Override
                     public void onAutoFocus(boolean b, Camera camera) {
                         if (!b) {
-                            Toast.makeText(getApplicationContext(),"gg 这打了马赛克",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "没有聚焦！", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         //对焦成功则拍照
@@ -246,21 +241,19 @@ public class Map extends AppCompatActivity {
             }
         });
     }
+
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         // 如果要显示位置图标,必须先开启图层定位
         baiduMap.setMyLocationEnabled(true);
-        if (!locationClient.isStarted())
-        {
+        if (!locationClient.isStarted()) {
             locationClient.start();
         }
         super.onStart();
     }
 
     @Override
-    protected void onStop()
-    {
+    protected void onStop() {
         // 关闭图层定位
         baiduMap.setMyLocationEnabled(false);
         locationClient.stop();
@@ -268,8 +261,7 @@ public class Map extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
         // 在activity执行onDestroy时执行mMapView.onDestroy()
         mMapView.onDestroy();
@@ -277,16 +269,14 @@ public class Map extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
         // 在activity执行onResume时执行mMapView. onResume ()
         mMapView.onResume();
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
         // 在activity执行onPause时执行mMapView. onPause ()
         mMapView.onPause();
@@ -301,7 +291,7 @@ public class Map extends AppCompatActivity {
 
     public void initLocation() {
         locationClient = new LocationClient(this);
-        firstLocation =true;
+        firstLocation = true;
         // 设置定位的相关配置
         LocationClientOption option = new LocationClientOption();
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy); //设置定位进度 高精度
@@ -312,16 +302,12 @@ public class Map extends AppCompatActivity {
         locationClient.setLocOption(option); //设置定位参数
     }
 
-//    public LatLng getMyOption() {
-//
-//    }
 
-    /*
     //实现相机预览和拍照界面
-    */
     private class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
 
         private SurfaceHolder surfaceHolder = null;
+
         public CameraSurfaceView(Context context) {
             super(context);
             //保存 surfaceHolder ,设定回调对象
@@ -366,7 +352,7 @@ public class Map extends AppCompatActivity {
             for (Camera.Size size : sizes) {
                 if (size.width <= 1600) {
                     //parameters.setPreviewSize(size.width,size.height);
-                    parameters.setPictureSize(size.width,size.height);
+                    parameters.setPictureSize(size.width, size.height);
                     break;
                 }
             }
@@ -375,8 +361,7 @@ public class Map extends AppCompatActivity {
                 //设置为竖屏方向
                 parameters.set("orientation", "portrait");
                 camera.setDisplayOrientation(90);
-            }
-            else {
+            } else {
                 //设置为横屏方向
                 parameters.set("orientation", "landscape");
                 camera.setDisplayOrientation(0);
@@ -410,9 +395,7 @@ public class Map extends AppCompatActivity {
             camera = null;
         }
 
-        /*
-        ** Camera 取景回调接口
-         */
+        // Camera 取景回调接口
         private Camera.PreviewCallback previewCallback = new Camera.PreviewCallback() {
             @Override
             public void onPreviewFrame(byte[] bytes, Camera camera) {
@@ -423,26 +406,22 @@ public class Map extends AppCompatActivity {
 
     }
 
-    /*
+
     //拍照回调接口
-    */
-    private class PictureTakenCallback implements Camera.PictureCallback{
+    private class PictureTakenCallback implements Camera.PictureCallback {
         @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void onPictureTaken(byte[] bytes, Camera camera) {
             //视情况释放照片内存
-            if (picture!=null && !picture.isRecycled()) {
+            if (picture != null && !picture.isRecycled()) {
                 // 经纬度信息在 locationClient 位置监听中获取 赋值
                 picture.recycle();
                 camera.startPreview();
             }
             //暂停相机预览
             camera.stopPreview();
-            //
             picture = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-            //
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                //
                 Matrix matrix = new Matrix();
                 matrix.postRotate(90);
                 int w = picture.getWidth();
@@ -454,18 +433,17 @@ public class Map extends AppCompatActivity {
                     picture = bitmap;
                 } catch (OutOfMemoryError outOfMemoryError) {
                     //旋转照片失败
-                    Toast.makeText(getApplicationContext(),"旋转失败",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "旋转失败", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 //默认横屏则不做任何处理
-                Toast.makeText(getApplicationContext(),"已经是最终形态了-。-",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "已经是最终形态了-。-", Toast.LENGTH_SHORT).show();
             }
             if (picture != null) {
-                //*
                 //保存照片到 SD 卡
-                String picPath = CommonUtils.savePicture(getApplicationContext(),picture,CommonUtils.PICTURE_PATH);
+                String picPath = CommonUtils.savePicture(getApplicationContext(), picture, CommonUtils.PICTURE_PATH);
 
-                Toast.makeText(getApplicationContext(),CommonUtils.THUMB_PATH,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), CommonUtils.THUMB_PATH, Toast.LENGTH_SHORT).show();
 
                 Bitmap thumb64 = CommonUtils.getPicture64(picPath);
                 //保存缩略图到 SD卡
@@ -474,29 +452,28 @@ public class Map extends AppCompatActivity {
                 String picname = new File(picPath).getName();
                 String thumb64name = new File(thumb64Path).getName();
 
-//                Toast.makeText(getApplicationContext(), String.format("%d",albumId),Toast.LENGTH_LONG).show();
-
                 // 保存照片数据到数据库
                 SQLiteDatabase db = openOrCreateDatabase("maphotos.db", Context.MODE_PRIVATE, null);
                 String savesql = String.format("insert into t_album_picture(latitude, " +
                         " longitude, picture, thumb, album_id)" +
-                        " values(%f, %f, '%s', '%s', %d)", myLatitude,myLongitude ,picname, thumb64name, albumId);
+                        " values(%f, %f, '%s', '%s', %d)", myLatitude, myLongitude, picname, thumb64name, albumId);
                 db.execSQL(savesql);
                 //修改相册条目为最近一次拍照的缩略图
-                savesql = String.format("update t_album set thumb='%s' where _id=%d",thumb64name,albumId);
+                savesql = String.format("update t_album set thumb='%s' where _id=%d", thumb64name, albumId);
                 db.execSQL(savesql);
 
                 db.close();
+
                 //在地图上显示照片缩略图图标
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.title(albumTitle);
-                markerOptions.position(new LatLng(myLatitude,myLongitude));
+                markerOptions.position(new LatLng(myLatitude, myLongitude));
                 markerOptions.icon(BitmapDescriptorFactory.fromBitmap(thumb64));
                 baiduMap.addOverlay(markerOptions);
                 //
                 picture.recycle();
                 picture = null;
-                Toast.makeText(getApplicationContext(),"已拍照",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "已拍照", Toast.LENGTH_SHORT).show();
                 //返回 回传
                 onBackPressed();
             }
@@ -507,18 +484,13 @@ public class Map extends AppCompatActivity {
 
     private void showOverflowMenu() {
         try {
-            //
-            //
+
             ViewConfiguration config = ViewConfiguration.get(this);
-            //
-            //
+
             java.lang.reflect.Field menuKeyField =
                     ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
             if (menuKeyField != null) {
-                //
-                //
                 menuKeyField.setAccessible(true);
-                //
                 menuKeyField.setBoolean(config, false);
             }
         } catch (Exception e) {
@@ -528,14 +500,12 @@ public class Map extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_map, menu);
+        getMenuInflater().inflate(R.menu.map, menu);
         return true;
-//        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //
         switch (item.getItemId()) {
             case R.id.menu_map_none:
 

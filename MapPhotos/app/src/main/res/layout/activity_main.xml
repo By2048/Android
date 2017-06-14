@@ -17,17 +17,7 @@
             android:layout_height="match_parent"
             android:clickable="true" />
     </FrameLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/popCamera"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/camera"/>
-    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/cameraBar"
         android:layout_width="wrap_content"
@@ -52,7 +42,20 @@
                 android:id="@+id/snap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/camera"/>
+                android:background="@drawable/snap"/>
         </LinearLayout>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/popCamera"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/camera" />
+    </RelativeLayout>
 </FrameLayout>

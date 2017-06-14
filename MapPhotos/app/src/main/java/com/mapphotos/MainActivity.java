@@ -39,11 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ListView photoListView;
-    //
-    private List<RowInfoBean> photoList = new ArrayList<RowInfoBean>();
-    //
+    private List<Photo> photoList = new ArrayList<Photo>();
     private PhotoAdapter photoAdapter;
-
     private int seledRowIndex = -1;
 
     //溢出菜单中的 “修改名称” 菜单项
@@ -59,13 +56,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_photolistview);
-        //setContentView(R.layout.activity_main);
 
         //初始化ListView组件
         photoListView = (ListView) findViewById(R.id.phoroListView);
         photoAdapter = new PhotoAdapter(this);
         photoListView.setAdapter(photoAdapter);
-//初始化数据库
+        //初始化数据库
         initDB();
         showOverflowMenu();
 
@@ -94,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
     //加载数据库信息
@@ -103,18 +97,18 @@ public class MainActivity extends AppCompatActivity {
         //打开数据库
         SQLiteDatabase db = openOrCreateDatabase("maphotos.db", Context.MODE_PRIVATE, null);
         //设定默认
-        Drawable defaultThumb = getResources().getDrawable(R.drawable.map_icon);
+        Drawable defaultThumb = getResources().getDrawable(R.drawable.film);
         //查询所有相册
         String sql = "select * from t_album";
         Cursor cursor = db.rawQuery(sql, null);
         //
         while (cursor.moveToNext()) {
-            RowInfoBean bean = new RowInfoBean();
+            Photo bean = new Photo();
             bean.id = cursor.getInt(cursor.getColumnIndex("_id"));
             bean.title = cursor.getString(cursor.getColumnIndex("title"));
             //处理
             String thumb = cursor.getString(cursor.getColumnIndex("thumb"));
-//            Toast.makeText(getApplicationContext(), thumb+ " " + bean.id + " " + bean.title,Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getApplicationContext(), thumb+ " " + bean.id + " " + bean.title,Toast.LENGTH_SHORT).show();
             if (thumb == null || thumb.equals("")) {
                 bean.thumb = defaultThumb;
             } else {
@@ -135,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = openOrCreateDatabase("maphotos.db", Context.MODE_PRIVATE, null);
 
         String sql;
-        //
         sql = "create table if not exists t_album(" +
                 " _id integer primary key autoincrement," +
                 " title varchar, thumb varchar)";
@@ -160,14 +153,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //
         switch (item.getItemId()) {
             case R.id.menu_item_gallery:
                 //Toast.makeText(this,"biubiubiu",Toast.LENGTH_SHORT).show();
                 int albumId = -1;
                 //如果选中对应相册id 修改albumId
                 if (seledRowIndex != -1) {
-                    RowInfoBean bean = photoList.get(seledRowIndex);
+                    Photo bean = photoList.get(seledRowIndex);
                     albumId = bean.id;
                 }
                 //启动相册浏览
@@ -217,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
                 //删除选中行，并更新ListView数据
                 if (seledRowIndex != -1) {
                     //获取选中行
-                    final RowInfoBean bbq = photoList.get(seledRowIndex);
+                    final Photo bbq = photoList.get(seledRowIndex);
                     photoList.remove(seledRowIndex);
                     //更新数据库
                     SQLiteDatabase db = openOrCreateDatabase("maphotos.db", Context.MODE_PRIVATE, null);
@@ -237,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.menu_item_edit:
                 //获取当前选中的数据行
-                final RowInfoBean bbq = photoList.get(seledRowIndex);
+                final Photo bbq = photoList.get(seledRowIndex);
                 //设定用来输入相册名称的输入框
                 final EditText input = new EditText(this);
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -288,21 +280,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //通过java 机制反射设置菜单
-    //
     private void showOverflowMenu() {
         try {
-            //
-            //
             ViewConfiguration config = ViewConfiguration.get(this);
-            //
-            //
             java.lang.reflect.Field menuKeyField =
                     ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
             if (menuKeyField != null) {
-                //
-                //
                 menuKeyField.setAccessible(true);
-                //
                 menuKeyField.setBoolean(config, false);
             }
         } catch (Exception e) {
@@ -315,7 +299,6 @@ public class MainActivity extends AppCompatActivity {
         private Context context;
         private LayoutInflater layoutInflater;
 
-        //
         public PhotoAdapter(Context context) {
             this.context = context;
             this.layoutInflater = LayoutInflater.from(context);
@@ -339,10 +322,8 @@ public class MainActivity extends AppCompatActivity {
         //
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            //
-            //
             if (view == null) {
-                view = layoutInflater.inflate(R.layout.activity_main_listview_row, null);
+                view = layoutInflater.inflate(R.layout.listview, null);
             }
             //初始化 每一行 中的组件 设置内容
             ImageView thumbView = (ImageView) view.findViewById(R.id.imageViewThumb);
@@ -350,8 +331,7 @@ public class MainActivity extends AppCompatActivity {
             ImageView imageViewMap = (ImageView) view.findViewById(R.id.imageViewMap);
 
             //获取单击的数据行
-            //
-            final RowInfoBean bean = photoList.get(i);
+            final Photo bean = photoList.get(i);
             //thumbView.setBackgroundDrawable(bean.thumb);
             thumbView.setImageDrawable(bean.thumb);
             titleView.setText(bean.title);
@@ -374,7 +354,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(intent, TO_MAPVIEW);//数据回传
                 }
             });
-
             //返回 行 中的内容
             //在ListView 中显示
             return view;
