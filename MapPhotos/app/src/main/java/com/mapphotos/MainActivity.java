@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
     private void initDB() {
         //打开或创建数据库
         SQLiteDatabase db = openOrCreateDatabase("maphotos.db", Context.MODE_PRIVATE, null);
-
+        
         String sql;
         sql = "create table if not exists t_album(" +
                 " _id integer primary key autoincrement," +
@@ -155,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_gallery:
-                //Toast.makeText(this,"biubiubiu",Toast.LENGTH_SHORT).show();
                 int albumId = -1;
                 //如果选中对应相册id 修改albumId
                 if (seledRowIndex != -1) {
@@ -169,7 +168,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(galleryintent);
                 break;
             case R.id.menu_item_add:
-                //Toast.makeText(this, "duang", Toast.LENGTH_SHORT).show();
                 //创建输入框
                 final EditText txtTitle = new EditText(this);
                 txtTitle.setInputType(InputType.TYPE_CLASS_TEXT);

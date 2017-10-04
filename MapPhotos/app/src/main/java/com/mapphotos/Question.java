@@ -1,8 +1,5 @@
 package com.mapphotos;
 
-/**
- * Created by AM on 2017-6-14.
- */
 
 public class Question {
 }

@@ -437,7 +437,7 @@ public class Map extends AppCompatActivity {
                 }
             } else {
                 //默认横屏则不做任何处理
-                Toast.makeText(getApplicationContext(), "已经是最终形态了-。-", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "不处理！", Toast.LENGTH_SHORT).show();
             }
             if (picture != null) {
                 //保存照片到 SD 卡
